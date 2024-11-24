@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opret Konto | Eventplanlægger</title>
+    <link rel="stylesheet" href="../../main%20page/styles.css">
+</head>
+<body>
+<!-- Header Section -->
+<header>
+    <h1>Opret en konto på Eventplanlægger</h1>
+    <p>Kom i gang med at planlægge dine events på få minutter</p>
+</header>
+
+<!-- Signup Form -->
+<main>
+    <section class="form-section">
+        <h2>Opret Konto</h2>
+        <form action="/api/signup" method="POST">
+            <label for="name">Navn:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Adgangskode:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="confirm-password">Bekræft adgangskode:</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+
+            <button type="submit">Opret konto</button>
+        </form>
+        <p>Har du allerede en konto? <a href="../login/login.html">Log ind her</a></p>
+    </section>
+</main>
+
+<!-- Footer Section -->
+<footer>
+
+</footer>
+</body>
+</html>
