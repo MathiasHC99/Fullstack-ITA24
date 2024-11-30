@@ -1,0 +1,68 @@
+[
+  {
+    "_id": { "$oid": "64c7a8d12f8a2a1234567890" },
+    "title": "Community Meetup",
+    "description": "A meetup for all members of the community.",
+    "date": "2024-12-15",
+    "time": "18:00",
+    "location": "Community Hall, Main Street",
+    "comments": [
+      {
+        "user": "John Doe",
+        "comment": "Looking forward to this!"
+      },
+      {
+        "user": "Jane Smith",
+        "comment": "I’ll bring snacks."
+      }
+    ],
+    "photos": [
+      "photo1.jpg",
+      "photo2.jpg"
+    ]
+  },
+  {
+    "_id": { "$oid": "64c7a8d12f8a2a1234567891" },
+    "title": "Tech Workshop",
+    "description": "A hands-on workshop covering the latest in web development and AI.",
+    "date": "2024-12-10",
+    "time": "14:00",
+    "location": "Innovation Center, 5th Avenue",
+    "comments": [
+      {
+        "user": "Alice Cooper",
+        "comment": "Is there a fee for this workshop?"
+      },
+      {
+        "user": "Bob Marley",
+        "comment": "Excited to learn about AI applications!"
+      }
+    ],
+    "photos": [
+      "techworkshop1.jpg",
+      "techworkshop2.jpg"
+    ]
+  },
+  {
+    "_id": { "$oid": "64c7a8d12f8a2a1234567892" },
+    "title": "Yoga Retreat",
+    "description": "A relaxing yoga retreat for beginners and experienced practitioners alike.",
+    "date": "2024-12-18",
+    "time": "08:00",
+    "location": "Sunrise Wellness Center, Hillside Road",
+    "comments": [
+      {
+        "user": "Chloe Adams",
+        "comment": "Can we bring our own yoga mats?"
+      },
+      {
+        "user": "Daniel Craig",
+        "comment": "Looking forward to some relaxation time."
+      }
+    ],
+    "photos": [
+      "yogaretreat1.jpg",
+      "yogaretreat2.jpg"
+    ]
+  }
+]

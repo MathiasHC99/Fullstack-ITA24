@@ -8,12 +8,12 @@
 </head>
 <body>
 <header>
-    <h1>Velkommen til Eventplanlægger</h1>
+    <h1>Eventplanlægger</h1>
+    <p>Velkommen til Eventplanlægger</p>
     <p>Opret og administrer dine events på én enkel platform</p>
     <button onclick="window.location.href='login.html'">Login</button>
     <button onclick="window.location.href='signup.html'">Opret Konto</button>
 </header>
-
 
 <nav>
     <ul>
@@ -24,9 +24,7 @@
     </ul>
 </nav>
 
-
 <main>
-    <!-- eksempel på kommende events -->
     <section id="upcoming-events">
         <h2>Kommende Events</h2>
         <div class="event-list">
@@ -36,11 +34,9 @@
                 <p><strong>Lokation:</strong> Strandvej 123, København</p>
                 <button onclick="window.location.href='event-details.html?event_id=1'">Se detaljer</button>
             </div>
-
         </div>
     </section>
 
-    <!-- Create Event Section -->
     <section id="create-event">
         <h2>Opret et nyt Event</h2>
         <form action="/api/events" method="POST">
@@ -63,12 +59,10 @@
         </form>
     </section>
 
-
     <section id="about">
         <h2>Om Os</h2>
         <p>Eventplanlægger er en platform designet til at gøre eventplanlægning enkel og overskuelig. Opret og administrer dine events, inviter gæster og hold styr på deltagelse.</p>
     </section>
-
 
     <section id="contact">
         <h2>Kontakt Os</h2>
@@ -76,9 +70,14 @@
     </section>
 </main>
 
-
 <footer>
-    <p>hey med dig :D</p>
+    <p>Mail: <a href="mailto:eventplanner@hotmail.com">eventplanner@hotmail.com</a></p>
+    <p>Phone number: +367482393</p>
+    <p>FAX: 212-322-2673</p>
+    <div class="social-media">
+        <p>SoMe: <a href="https://twitter.com/Eventplanner">@Eventplanner</a></p>
+    </div>
 </footer>
 </body>
 </html>
+
