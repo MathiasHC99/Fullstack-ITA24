@@ -17,86 +17,80 @@ const databaseName = "eventPlanner";
 let eventsCollection;
 
 // Connect to MongoDB and set up the collection
-client.connect()
-    .then(() => {
+async function connectDB() {
+    try {
+        await client.connect();
         console.log("Connected to MongoDB");
         const db = client.db(databaseName);
         eventsCollection = db.collection("events");
-    })
-    .catch((err) => console.error("Failed to connect to MongoDB", err));
+    } catch (err) {
+        console.error("Failed to connect to MongoDB", err);
+    }
+}
+
+connectDB();
 
 // Routes
 
-// 1. Get all events
+// Get all events
 app.get("/events", async (req, res) => {
     try {
         const events = await eventsCollection.find({}).toArray();
-        res.send(events);
+        res.status(200).json(events);
     } catch (error) {
-        res.status(500).send({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 });
 
-// 2. Get a single event by ID
+// Get a single event by ID
 app.get("/events/:id", async (req, res) => {
     try {
-        const eventId = req.params.id;
-        const event = await eventsCollection.findOne({ _id: new ObjectId(eventId) });
+        const event = await eventsCollection.findOne({ _id: new ObjectId(req.params.id) });
         if (!event) {
-            return res.status(404).send({ message: "Event not found" });
+            return res.status(404).json({ message: "Event not found" });
         }
-        res.send(event);
+        res.status(200).json(event);
     } catch (error) {
-        res.status(500).send({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 });
 
-// 3. Create a new event
+// Create a new event
 app.post("/events", async (req, res) => {
     try {
-        const newEvent = req.body;
-        const result = await eventsCollection.insertOne(newEvent);
-        res.status(201).send(result.ops[0]);
+        const result = await eventsCollection.insertOne(req.body);
+        res.status(201).json(result.ops[0]);
     } catch (error) {
-        res.status(500).send({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 });
 
-// 4. Update an event by ID
+// Update an event by ID
 app.put("/events/:id", async (req, res) => {
     try {
-        const eventId = req.params.id;
-        const updatedEvent = req.body;
-
         const result = await eventsCollection.updateOne(
-            { _id: new ObjectId(eventId) },
-            { $set: updatedEvent }
+            { _id: new ObjectId(req.params.id) },
+            { $set: req.body }
         );
-
         if (result.matchedCount === 0) {
-            return res.status(404).send({ message: "Event not found" });
+            return res.status(404).json({ message: "Event not found" });
         }
-
-        res.send({ message: "Event updated successfully" });
+        res.status(200).json({ message: "Event updated successfully" });
     } catch (error) {
-        res.status(500).send({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 });
 
-// 5. Delete an event by ID
+// Delete an event by ID
 app.delete("/events/:id", async (req, res) => {
     try {
-        const eventId = req.params.id;
-
-        const result = await eventsCollection.deleteOne({ _id: new ObjectId(eventId) });
-
+        const result = await eventsCollection.deleteOne({ _id: new ObjectId(req.params.id) });
         if (result.deletedCount === 0) {
-            return res.status(404).send({ message: "Event not found" });
+            return res.status(404).json({ message: "Event not found" });
         }
-
-        res.send({ message: "Event deleted successfully" });
+        res.status(200).json({ message: "Event deleted successfully" });
     } catch (error) {
-        res.status(500).send({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 });
 
@@ -104,3 +98,4 @@ app.delete("/events/:id", async (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
+// ved ikke om det virker, min computer driller
