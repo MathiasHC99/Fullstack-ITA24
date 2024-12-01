@@ -9,3 +9,5 @@ registerLink.onclick = () => {
 loginLink.onclick = () => {
     wrapper.classList.remove('active')
 }
+
+// login/signup idea taken from: https://github.com/Mohammed-Faysal/Login-Registration-form

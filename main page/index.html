@@ -19,25 +19,24 @@
         <li><a href="#upcoming-events">Kommende Events</a></li>
         <li><a href="#create-event">Opret Event</a></li>
         <li><a href="#about">Om Os</a></li>
-        <li><a href="#contact">Kontakt</a></li>
     </ul>
 </nav>
 
 
 <main>
-    <!-- eksempel på kommende events -->
     <section id="upcoming-events">
         <h2>Kommende Events</h2>
-        <div class="event-list">
+        <div class="event-list" id="event-list">
+            <!-- Events will be dynamically added here -->
             <div class="event-card">
                 <h3>Sommerfest</h3>
                 <p><strong>Dato:</strong> 15. juli 2024</p>
                 <p><strong>Lokation:</strong> Strandvej 123, København</p>
                 <button onclick="window.location.href='event-details.html?event_id=1'">Se detaljer</button>
             </div>
-
         </div>
     </section>
+
 
     <!-- Create Event Section -->
     <section id="create-event">
@@ -69,15 +68,19 @@
     </section>
 
 
-    <section id="contact">
-        <h2>Kontakt Os</h2>
-        <p>Har du spørgsmål? Kontakt os på <a href="mailto:hey@med.dig">mailto:hey@med.dig</a></p>
-    </section>
+
 </main>
 
 
-<footer>
-    <p>hey med dig :D</p>
+<<footer>
+    <h2>Kontakt Os</h2>
+    <p>Har du spørgsmål? Kontakt os på <a href="mailto:hey@med.dig">mailto:eventplanner@mail.dk</a></p>
+    <p>Phone number: +4512345678</p>
+    <div class="socialMedia">
+        <p>SoMe: <a href="Eventplanner">Eventplanner</a></p>
+    </div>
 </footer>
+<script src="main.js"></script>
+<script src="server.js"></script>
 </body>
 </html>
