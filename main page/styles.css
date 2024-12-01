@@ -164,7 +164,7 @@ form button:hover {
     background-color: #0077cc;
 }
 
-/* About & Contact Sections */
+
 #about, #contact {
     background-color: #f4f4f9;
     padding: 2rem;
@@ -177,7 +177,6 @@ form button:hover {
     color: #666;
 }
 
-/* Footer */
 footer {
     background-color: #333;
     color: #fff;
@@ -189,6 +188,7 @@ footer {
 footer p {
     font-size: 0.9rem;
 }
+
 
 /* Responsive Design */
 @media (max-width: 768px) {

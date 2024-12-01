@@ -1,24 +1,22 @@
-// Fetch upcoming events from the API when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     fetchEvents();
 });
 
-// Fetch events function
 function fetchEvents() {
     fetch('http://localhost:3000/api/events')
-        .then(response => response.json())
-        .then(data => {
-            displayEvents(data);
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
         })
-        .catch(error => {
-            console.error('Error fetching events:', error);
-        });
+        .then(data => displayEvents(data))
+        .catch(error => console.error('Error fetching events:', error));
 }
 
-// Display events on the page
 function displayEvents(events) {
     const eventList = document.querySelector('.event-list');
-    eventList.innerHTML = ''; // Clear current events
+    eventList.innerHTML = '';
 
     events.forEach(event => {
         const eventCard = document.createElement('div');
@@ -33,8 +31,7 @@ function displayEvents(events) {
     });
 }
 
-// Handle event creation form submission
-const eventForm = document.querySelector('form');
+const eventForm = document.getElementById('event-form');
 if (eventForm) {
     eventForm.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -51,7 +48,6 @@ if (eventForm) {
     });
 }
 
-// Create new event via API
 function createEvent(eventData) {
     fetch('http://localhost:3000/api/events', {
         method: 'POST',
@@ -60,16 +56,19 @@ function createEvent(eventData) {
         },
         body: JSON.stringify(eventData)
     })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to create event');
+            }
+            return response.json();
+        })
         .then(data => {
             if (data.success) {
                 alert('Event created successfully!');
-                fetchEvents(); // Re-fetch events after creation
+                fetchEvents();  // Refresh event list after creating a new event
             } else {
                 alert('Error creating event!');
             }
         })
-        .catch(error => {
-            console.error('Error creating event:', error);
-        });
+        .catch(error => console.error('Error creating event:', error));
 }

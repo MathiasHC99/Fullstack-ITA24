@@ -4,11 +4,12 @@ const mysql = require('mysql2');
 const cors = require('cors');
 const app = express();
 
-
+// Enable CORS
 app.use(cors());
+
+// Middleware to parse JSON
 app.use(express.json());
 
-// MySQL database connection using environment variables
 const db = mysql.createConnection({
     host: process.env.DBHOST,
     user: process.env.DBUSER,
@@ -16,7 +17,6 @@ const db = mysql.createConnection({
     database: process.env.DBNAME
 });
 
-// Connect to the MySQL database
 db.connect(err => {
     if (err) {
         console.error('Error connecting to database:', err);
@@ -25,7 +25,7 @@ db.connect(err => {
     console.log('Connected to MySQL database');
 });
 
-// API Route: Get all events
+// Route to fetch events
 app.get('/api/events', (req, res) => {
     const query = 'SELECT * FROM events';
     db.query(query, (err, results) => {
@@ -37,10 +37,9 @@ app.get('/api/events', (req, res) => {
     });
 });
 
-// API Route: Create a new event
+// Route to create an event
 app.post('/api/events', (req, res) => {
     const { title, description, date, time, location } = req.body;
-
     const query = 'INSERT INTO events (title, description, date, time, location) VALUES (?, ?, ?, ?, ?)';
     db.query(query, [title, description, date, time, location], (err, results) => {
         if (err) {
@@ -51,7 +50,7 @@ app.post('/api/events', (req, res) => {
     });
 });
 
-// Start the server using the PORT from the .env file
+// Start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
